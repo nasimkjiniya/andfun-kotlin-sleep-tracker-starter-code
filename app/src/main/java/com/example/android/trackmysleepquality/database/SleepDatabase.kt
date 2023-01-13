@@ -26,12 +26,15 @@ abstract class SleepDatabase : RoomDatabase()
 {
 
         abstract val sleepDatabaseDao : SleepDatabaseDao
+
+        //In kotlin instead of const we use companion object
         companion object{
             @Volatile
             private var INSTANCE : SleepDatabase? =null
 
             fun getInstance(context : Context) : SleepDatabase
             {
+                //at a time only single thread can access
                 synchronized(this)
                 {
                     var instance = INSTANCE

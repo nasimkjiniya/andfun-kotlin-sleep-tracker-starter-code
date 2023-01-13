@@ -39,6 +39,8 @@ class SleepTrackerViewModel(
         val navigateToSleepQuality: LiveData<SleepNight?>
                 get() = _navigateToSleepQuality
 
+        //use this func to do changes with livedata on main thread or to compute other information
+        //here we are computing String object from List of SleeNights LiveData Object
         val nightsString = Transformations.map(nights) { nights ->
                 formatNights(nights, application.resources)
         }
